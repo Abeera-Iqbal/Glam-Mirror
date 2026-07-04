@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+  /* Hamari Theme Colors */
+  --primary-pink: #ffb7c5;  /* Baby Pink */
+  --accent-pink: #ff69b4;   /* Hot Pink (Buttons ke liye) */
+  --bg-black: #121212;      /* Soft Black (Aankhon ko chubhta nahi) */
+  --text-white: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.1); /* Glass Effect */
+}
+
+body {
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  line-height: 1.6;
+}
+
+/* Links ki styling */
+a {
+  text-decoration: none;
+  color: var(--text-white);
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--primary-pink);
+}
+
+/* Buttons ka global design */
+.btn-primary {
+  background-color: var(--primary-pink);
+  color: #000;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-pink);
+  color: white;
+  transform: scale(1.05); /* Thora sa bara hoga */
+  box-shadow: 0 0 15px var(--accent-pink); /* Glow karega */
+}
