@@ -10,7 +10,11 @@ connectDB();
 
 // 2. SABSE PEHLE APP BANAO
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 7860;
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+});
 
 // 3. Middlewares
 app.use(cors());
@@ -30,11 +34,12 @@ app.use('/api/wardrobe', require('./routes/wardrobeRoutes'));
 // 5. Upload Folder Public karo (Taake images nazar ayen)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// 6. Test Route
-app.get('/', (req, res) => {
-    res.send("API is running...");
-});
+// 6. Serve React build
+app.use(express.static(path.join(__dirname, "../client/build")));
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 // 7. Server Start karo
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
